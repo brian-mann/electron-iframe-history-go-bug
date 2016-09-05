@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Main App2</h1>
+
+    <script type="text/javascript">
+      count = 0
+
+      var iframe = document.createElement("iframe")
+
+      var loaded = function(){
+        count += 1
+
+        switch (count){
+          case 1:
+            setTimeout(function(){
+              iframe.src = "iframe2.html"
+            }, 1000)
+            break;
+
+          case 2:
+            setTimeout(function(){
+              iframe.contentWindow.history.back()
+            }, 1000)
+
+          default:
+            return
+        }
+      }
+
+      iframe.addEventListener("load", loaded)
+
+      iframe.src = "iframe1.html"
+
+      document.body.appendChild(iframe)
+    </script>
+  </body>
+</html>
